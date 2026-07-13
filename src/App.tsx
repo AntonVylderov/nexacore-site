@@ -110,10 +110,11 @@ const useInView = (threshold = 0.2) => {
   return [ref, isVisible] as const;
 };
 
-const AnimatedSection = ({ children, className = '' }: { children: React.ReactNode; className?: string }) => {
+const AnimatedSection = ({ children, className = '', id }: { children: React.ReactNode; className?: string; id?: string }) => {
   const [ref, isVisible] = useInView(0.15);
   return (
     <div
+      id={id}
       ref={ref}
       className={`transition-all duration-700 ease-out ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
