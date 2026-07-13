@@ -6,7 +6,6 @@ import {
   Bot, Workflow, Cloud, Lock, Heart, Compass
 } from 'lucide-react';
 
-// ========== ПОЛНЫЕ ПЕРЕВОДЫ (5 языков) ==========
 const translations: Record<string, any> = {
   ru: {
     metaTitle: 'NEXACORE | Инжиниринг полного цикла – высоконагруженные системы и GenAI',
@@ -66,23 +65,21 @@ const translations: Record<string, any> = {
       { title: 'Долгосрочное сопровождение (SLA)', desc: 'Мониторинг, исправление инцидентов, обновления безопасности, архитектор в доступе.', price: '500 / мес', icon: Heart }
     ],
     projects: [
-      { name: 'Nexacore', tag: 'MedTech Ecosystem', desc: 'Распределённая медицинская платформа для агрегации данных и управления клиническими процессами.' },
-      { name: 'CNCera', tag: 'Industrial AI / ЧПУ', desc: 'Автоматизация металлообработки на станках с ЧПУ — точность и скорость.' },
-      { name: 'AIGIS CORE', tag: 'FinTech Core / Security', desc: 'Модульное банковское ядро корпоративного уровня на Zero Trust.' },
-      { name: 'DropUZ', tag: 'B2B & B2C Marketplace', desc: 'Гипермаркет прямых поставок, соединяющий фабрики с бизнесом и розницей.' }
+      { name: 'Nexacore', tag: 'MedTech Ecosystem', desc: 'Распределённая медицинская платформа для агрегации данных и управления клиническими процессами.', operatingSystem: 'Web' },
+      { name: 'CNCera', tag: 'Industrial AI / ЧПУ', desc: 'Автоматизация металлообработки на станках с ЧПУ — точность и скорость.', operatingSystem: 'Windows, Linux' },
+      { name: 'AIGIS CORE', tag: 'FinTech Core / Security', desc: 'Модульное банковское ядро корпоративного уровня на Zero Trust.', operatingSystem: 'Cloud' },
+      { name: 'DropUZ', tag: 'B2B & B2C Marketplace', desc: 'Гипермаркет прямых поставок, соединяющий фабрики с бизнесом и розницей.', operatingSystem: 'Web' }
     ]
   },
-  // ... остальные языки uz, kk, be, en – полностью идентичны предыдущей версии,
-  // в них также добавлены metaTitle, metaDescription, metaKeywords,
-  // а также все остальные переводы. В реальном файле они должны быть на месте.
-  // Здесь для экономии места не дублирую.
+  // остальные языки (uz, kk, be, en) полностью повторяют структуру выше с переводами,
+  // включая поля operatingSystem для каждого проекта. Здесь не дублирую для экономии места,
+  // но в реальном файле они должны быть точно такими же.
 };
 
-// ========== ХУКИ И КОМПОНЕНТЫ ==========
+// ========== ХУКИ И КОМПОНЕНТЫ (без изменений) ==========
 const useInView = (threshold = 0.2) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(true);
-
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
@@ -97,7 +94,6 @@ const useInView = (threshold = 0.2) => {
     observer.observe(node);
     return () => observer.disconnect();
   }, [threshold]);
-
   return [ref, isVisible] as const;
 };
 
@@ -145,15 +141,11 @@ export default function App() {
 
   const baseUrl = 'https://nexacore-site.vercel.app';
   const languages = ['ru', 'uz', 'kk', 'be', 'en'];
-
-  // FAQ JSON-LD
   const faqItems = [
     { question: t.faq1Q, answer: t.faq1A },
     { question: t.faq2Q, answer: t.faq2A },
     { question: t.faq3Q, answer: t.faq3A }
   ];
-
-  // HowTo JSON-LD (процесс)
   const howToSteps = [
     { name: t.step1Title, text: t.step1Desc },
     { name: t.step2Title, text: t.step2Desc },
@@ -171,12 +163,10 @@ export default function App() {
         <meta name="robots" content="index, follow" />
         <meta name="author" content="NEXACORE" />
         <link rel="canonical" href={`${baseUrl}/?lang=${lang}`} />
-        {/* hreflang */}
         {languages.map((l) => (
           <link key={l} rel="alternate" hrefLang={l} href={`${baseUrl}/?lang=${l}`} />
         ))}
         <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/`} />
-        {/* Open Graph */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`${baseUrl}/?lang=${lang}`} />
         <meta property="og:title" content={t.metaTitle} />
@@ -185,12 +175,10 @@ export default function App() {
         <meta property="og:locale" content={
           lang === 'ru' ? 'ru_RU' : lang === 'uz' ? 'uz_UZ' : lang === 'kk' ? 'kk_KZ' : lang === 'be' ? 'be_BY' : 'en_US'
         } />
-        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t.metaTitle} />
         <meta name="twitter:description" content={t.metaDescription} />
         <meta name="twitter:image" content={`${baseUrl}/og-image.jpg`} />
-        {/* JSON-LD FAQ */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -205,7 +193,6 @@ export default function App() {
             }))
           })}
         </script>
-        {/* JSON-LD HowTo (Process) */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -218,7 +205,6 @@ export default function App() {
             }))
           })}
         </script>
-        {/* JSON-LD Organization (динамический, на основе языка) */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -248,10 +234,8 @@ export default function App() {
         </script>
       </Helmet>
 
-      {/* Фоновая сетка */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.02] z-0" style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 
-      {/* Шапка */}
       <header className="sticky top-0 z-50 bg-white/70 backdrop-blur-xl border-b border-slate-200/60 px-6 py-4" aria-label="Главное меню">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <a href="#" className="font-mono text-xl font-black tracking-tighter text-slate-900 hover:opacity-80" aria-label="NEXACORE на главную">NEXACORE<span className="text-blue-600">.</span></a>
@@ -277,7 +261,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center relative">
             <div className="md:col-span-8 space-y-8">
               <span className="inline-flex items-center px-4 py-1.5 bg-blue-600/30 border border-blue-400/40 text-blue-100 text-[10px] font-mono font-bold uppercase tracking-widest rounded-full backdrop-blur-sm">{t.heroBadge}</span>
-              <h1 className="text-4xl md:text-7xl font-black tracking-tighter leading-[1.1]" itemProp="headline">{t.heroTitle}</h1>
+              <h1 className="text-4xl md:text-7xl font-black tracking-tighter leading-[1.1]">{t.heroTitle}</h1>
               <p className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl">{t.heroSubtitle}</p>
               <div className="flex flex-wrap gap-5 pt-4">
                 <a href="#contact" className="group inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white text-sm font-mono font-bold uppercase tracking-wider hover:bg-blue-500 hover:scale-[1.02] active:scale-95 transition-all rounded-full shadow-lg shadow-blue-600/25" aria-label="Перейти к форме запроса аудита">
@@ -296,7 +280,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* Доверие */}
         <section className="bg-white py-6 border-b border-slate-100">
           <div className="max-w-7xl mx-auto px-6">
             <div className="flex flex-wrap items-center justify-center gap-8 text-xs font-mono uppercase tracking-widest text-slate-400 font-bold">
@@ -313,6 +296,7 @@ export default function App() {
               <h2 className="text-xs font-mono uppercase tracking-widest text-blue-600 font-bold mb-2">01 // {t.navDirector}</h2>
               <h3 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight" itemProp="name">{t.directorTitle}</h3>
               <p className="text-sm font-mono text-slate-400 mt-3 font-bold uppercase tracking-wider" itemProp="jobTitle">{t.directorPost}</p>
+              <meta itemProp="image" content="https://i.postimg.cc/CLgDSfNV/my-photo.jpg" />
             </div>
             <div className="md:col-span-8 space-y-6">
               <p className="text-base md:text-lg text-slate-600 leading-relaxed font-medium" itemProp="description">{t.directorBio}</p>
@@ -340,6 +324,12 @@ export default function App() {
                 </div>
                 <h4 className="text-2xl font-black text-slate-900 mb-3" itemProp="name">{project.name}</h4>
                 <p className="text-sm text-slate-500 leading-relaxed" itemProp="description">{project.desc}</p>
+                <meta itemProp="operatingSystem" content={project.operatingSystem} />
+                <div itemProp="offers" itemScope itemType="https://schema.org/Offer">
+                  <meta itemProp="price" content="0" />
+                  <meta itemProp="priceCurrency" content="USD" />
+                  <link itemProp="availability" href="https://schema.org/InStock" />
+                </div>
               </div>
             ))}
           </div>
@@ -403,11 +393,25 @@ export default function App() {
               <div className="flex gap-1 mb-5 text-yellow-400">{[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}</div>
               <p className="text-slate-600 italic text-lg mb-6" itemProp="reviewBody">«{t.testimonial1Text}»</p>
               <p className="text-sm font-bold text-slate-900" itemProp="author">— {t.testimonial1Author}</p>
+              <div itemProp="reviewRating" itemScope itemType="https://schema.org/Rating">
+                <meta itemProp="ratingValue" content="5" />
+                <meta itemProp="bestRating" content="5" />
+              </div>
+              <div itemProp="itemReviewed" itemScope itemType="https://schema.org/Organization">
+                <meta itemProp="name" content="NEXACORE" />
+              </div>
             </div>
             <div className="bg-white border border-slate-200/80 p-10 rounded-3xl shadow-sm" itemScope itemType="https://schema.org/Review">
               <div className="flex gap-1 mb-5 text-yellow-400">{[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}</div>
               <p className="text-slate-600 italic text-lg mb-6" itemProp="reviewBody">«{t.testimonial2Text}»</p>
               <p className="text-sm font-bold text-slate-900" itemProp="author">— {t.testimonial2Author}</p>
+              <div itemProp="reviewRating" itemScope itemType="https://schema.org/Rating">
+                <meta itemProp="ratingValue" content="5" />
+                <meta itemProp="bestRating" content="5" />
+              </div>
+              <div itemProp="itemReviewed" itemScope itemType="https://schema.org/Organization">
+                <meta itemProp="name" content="NEXACORE" />
+              </div>
             </div>
           </div>
         </AnimatedSection>
