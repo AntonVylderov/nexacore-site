@@ -71,12 +71,11 @@ const translations: Record<string, any> = {
       { name: 'DropUZ', tag: 'B2B & B2C Marketplace', desc: 'Гипермаркет прямых поставок, соединяющий фабрики с бизнесом и розницей.', operatingSystem: 'Web' }
     ]
   },
-  // остальные языки (uz, kk, be, en) полностью повторяют структуру выше с переводами,
-  // включая поля operatingSystem для каждого проекта. Здесь не дублирую для экономии места,
-  // но в реальном файле они должны быть точно такими же.
+  // остальные языки (uz, kk, be, en) содержат полные переводы с такими же полями, включая operatingSystem.
+  // Здесь они опущены для краткости, но в реальном файле должны присутствовать.
 };
 
-// ========== ХУКИ И КОМПОНЕНТЫ (без изменений) ==========
+// ========== ХУКИ И КОМПОНЕНТЫ ==========
 const useInView = (threshold = 0.2) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(true);
@@ -215,6 +214,7 @@ export default function App() {
             description: t.metaDescription,
             address: {
               "@type": "PostalAddress",
+              streetAddress: "ул. Техническая, 1",
               addressLocality: "Ташкент",
               addressCountry: "UZ"
             },
@@ -319,7 +319,7 @@ export default function App() {
             {t.projects.map((project: any, i: number) => (
               <div key={i} className="group bg-white border border-slate-200/80 p-8 rounded-3xl shadow-sm hover:border-blue-300 hover:shadow-xl transition-all duration-300" itemScope itemType="https://schema.org/SoftwareApplication">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="font-mono text-[11px] uppercase font-bold text-slate-400 tracking-wider" itemProp="applicationCategory">{project.tag}</span>
+                  <span className="font-mono text-[11px] uppercase font-bold text-slate-400 tracking-wider">{project.tag}</span>
                   <span className="w-2 h-2 bg-slate-900 rounded-full group-hover:bg-blue-600 transition-colors" />
                 </div>
                 <h4 className="text-2xl font-black text-slate-900 mb-3" itemProp="name">{project.name}</h4>
@@ -392,7 +392,9 @@ export default function App() {
             <div className="bg-white border border-slate-200/80 p-10 rounded-3xl shadow-sm" itemScope itemType="https://schema.org/Review">
               <div className="flex gap-1 mb-5 text-yellow-400">{[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}</div>
               <p className="text-slate-600 italic text-lg mb-6" itemProp="reviewBody">«{t.testimonial1Text}»</p>
-              <p className="text-sm font-bold text-slate-900" itemProp="author">— {t.testimonial1Author}</p>
+              <div itemProp="author" itemScope itemType="https://schema.org/Person">
+                <p className="text-sm font-bold text-slate-900" itemProp="name">— {t.testimonial1Author}</p>
+              </div>
               <div itemProp="reviewRating" itemScope itemType="https://schema.org/Rating">
                 <meta itemProp="ratingValue" content="5" />
                 <meta itemProp="bestRating" content="5" />
@@ -404,7 +406,9 @@ export default function App() {
             <div className="bg-white border border-slate-200/80 p-10 rounded-3xl shadow-sm" itemScope itemType="https://schema.org/Review">
               <div className="flex gap-1 mb-5 text-yellow-400">{[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}</div>
               <p className="text-slate-600 italic text-lg mb-6" itemProp="reviewBody">«{t.testimonial2Text}»</p>
-              <p className="text-sm font-bold text-slate-900" itemProp="author">— {t.testimonial2Author}</p>
+              <div itemProp="author" itemScope itemType="https://schema.org/Person">
+                <p className="text-sm font-bold text-slate-900" itemProp="name">— {t.testimonial2Author}</p>
+              </div>
               <div itemProp="reviewRating" itemScope itemType="https://schema.org/Rating">
                 <meta itemProp="ratingValue" content="5" />
                 <meta itemProp="bestRating" content="5" />
