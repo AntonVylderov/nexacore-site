@@ -6,6 +6,7 @@ import {
   Bot, Workflow, Cloud, Lock, Heart, Compass
 } from 'lucide-react';
 
+// Полные переводы (5 языков)
 const translations: Record<string, any> = {
   ru: {
     metaTitle: 'NEXACORE | Инжиниринг полного цикла – высоконагруженные системы и GenAI',
@@ -19,6 +20,7 @@ const translations: Record<string, any> = {
     heroSecondaryBtn: 'Смотреть кейсы',
     trustTitle: 'Нам доверяют',
     trustIndustries: ['MedTech', 'FinTech', 'Промышленность', 'E‑commerce'],
+    partnersTitle: 'Наши партнёры',
     directorTitle: 'Технологическое лидерство',
     directorPost: 'Основатель • CEO • CTO',
     directorBio: 'Мы создаём сложные цифровые экосистемы с 2023 года. Мой путь опирается на железнодорожное инженерное образование — это сформировало парадигму абсолютной отказоустойчивости, которую я перенёс в архитектуру NEXACORE.',
@@ -69,13 +71,263 @@ const translations: Record<string, any> = {
       { name: 'CNCera', tag: 'Industrial AI / ЧПУ', desc: 'Автоматизация металлообработки на станках с ЧПУ — точность и скорость.', operatingSystem: 'Windows, Linux' },
       { name: 'AIGIS CORE', tag: 'FinTech Core / Security', desc: 'Модульное банковское ядро корпоративного уровня на Zero Trust.', operatingSystem: 'Cloud' },
       { name: 'DropUZ', tag: 'B2B & B2C Marketplace', desc: 'Гипермаркет прямых поставок, соединяющий фабрики с бизнесом и розницей.', operatingSystem: 'Web' }
-    ]
+    ],
+    partnerLogos: ['UzAuto', 'Payme', 'Yandex', 'Sber', 'Kaspi', 'Beeline', 'Microsoft', 'Amazon', 'Google', 'IBM', 'Oracle', 'SAP']
   },
-  // остальные языки (uz, kk, be, en) содержат полные переводы с такими же полями, включая operatingSystem.
-  // Здесь они опущены для краткости, но в реальном файле должны присутствовать.
+  // остальные языки содержат аналогичные переводы с теми же ключами, включая partnerLogos
+  uz: {
+    metaTitle: 'NEXACORE | Toʻliq siklli injiniring – yuqori yuklamali tizimlar va GenAI',
+    metaDescription: 'Nosozlikka chidamli dasturiy taʼminot, GenAI yechimlar va himoyalangan bank yadrolarini loyihalashtiramiz. MDH rezidenti. 99.99% mavjudlik.',
+    metaKeywords: 'injiniring, Rust, Python, GenAI, AI, backend, arxitektura, avtomatlashtirish, NEXACORE, Oʻzbekiston, MDH',
+    navAbout: 'Kompaniya', navDirector: 'Raxbariyat', navProducts: 'Ekotizim', navServices: 'Imkoniyatlar', navContact: 'Aloqa',
+    heroBadge: 'To\'liq siklli injiniring • MDH rezidenti',
+    heroTitle: 'Biznesingizni 40% tezroq ishga tushiring — nosozliklarga chidamli arxitekturalar bilan',
+    heroSubtitle: 'GenAI yechimlar, yuqori yuklamali xizmatlar va himoyalangan bank yadrolarini loyihalashtiramiz va joriy qilamiz. Kafolatlangan mavjudlik 99,99%.',
+    heroBtn: 'Arxitektura auditini so\'rang', heroSecondaryBtn: 'Keyslarni ko\'rish',
+    trustTitle: 'Ishonch bildirgan sohalar', trustIndustries: ['MedTech', 'FinTech', 'Sanoat', 'E-tijorat'],
+    partnersTitle: 'Bizning hamkorlarimiz',
+    directorTitle: 'Texnologik yetakchilik', directorPost: 'Asoschi • CEO • CTO',
+    directorBio: 'Biz 2023-yildan buyon murakkab raqamli ekotizimlarni yaratib kelmoqdamiz. Mening muhandislik yo\'lim temir yo\'l texnik muhandisligiga asoslangan — bu mutlaq ishonchlilik tamoyilini NEXACORE dasturiy arxitekturasiga ko\'chirdim.',
+    directorStack: 'Asosiy kompetensiyalar: Rust (Tokio), Python (FastAPI), nosozlikka chidamli DB, AI-agentlar, GenAI, xavfsizlik protokollari.',
+    servicesTitle: 'Bizning imkoniyatlarimiz',
+    servicesSubtitle: '',
+    priceFrom: 'dan',
+    projectsTitle: 'Haqiqiy sektorda ishlab chiqilgan mahsulotlar',
+    projectsSubtitle: 'MedTech, FinTech, Industrial sohalarda qo\'llaniladi',
+    processTitle: 'Hamkorlik jarayoni',
+    step1Title: 'So\'rov', step1Desc: 'Spetsifikatsiyani to\'ldiring yoki messenjerda yozing.',
+    step2Title: 'IT-audit', step2Desc: 'Infratuzilma va ehtiyojlarni tahlil qilamiz.',
+    step3Title: 'Arxitektura', step3Desc: 'Batafsil yechim rejasini loyihalashtiramiz.',
+    step4Title: 'Ishlab chiqish', step4Desc: 'Bosqichma-bosqich amalga oshirib, qo\'llab-quvvatlaymiz.',
+    testimonialsTitle: 'Hamkorlar fikrlari',
+    testimonial1Text: 'NEXACORE bilan mikroservislarga 3 oyda biznesni to\'xtatmasdan o\'tdik. Ishonchlilik sezilarli oshdi.',
+    testimonial1Author: 'CTO, FinTech kompaniya',
+    testimonial2Text: 'GenAI-agent operatsion xarajatlarni 35% kamaytirdi. Jamoa biznes jarayonlarni chuqur tushunadi.',
+    testimonial2Author: 'Innovatsiyalar direktori, MedTech',
+    faqTitle: 'Ko\'p beriladigan savollar',
+    faq1Q: 'Nima uchun bunday narxlar?', faq1A: '2026-yilda raqobatbardosh boshlang\'ich narxlarni taklif qilamiz. Yuqori darajadagi arxitektura va sanoat ishonchliligi kesishmasida ishlaymiz. Ko\'p bosqichli audit kelajakdagi qimmat xatolarni bartaraf etadi.',
+    faq2Q: 'Xavfsizlik kafolati?', faq2A: 'Zero Trust, pentestlar, Rust — zaifliklarning butun sinfini yo\'q qiladi.',
+    faq3Q: 'Muddatlar?', faq3A: 'MVP — 4 haftadan. To\'liq integratsiya — murakkabligiga qarab 8 haftadan.',
+    contactTitle: 'So\'rovlarni qayta ishlash markazi',
+    contactSubtitle: 'Boshlang\'ich IT-audit uchun texnik talablarni to\'ldiring yoki tasdiqlangan kanallar orqali bog\'laning.',
+    formName: 'Tashkilot / Buyurtmachi nomi', formContact: 'Email yoki Telegram', formMessage: 'Texnik vazifaning qisqacha tavsifi...', formBtn: 'So\'rovni yuborish',
+    successTitle: 'So\'rov qabul qilindi!', successText: 'Ma\'lumotlar ishchi pochtangizga yuborildi. Arxitektor tahlilni boshladi.', successBtn: 'Yangi so\'rov',
+    footerRights: 'Barcha huquqlar himoyalangan.',
+    clientTypes: ['Jismoniy shaxslar', 'YTT', 'Yuridik shaxslar (B2B)'],
+    services: [
+      { title: 'Core tizimlar arxitekturasi', desc: 'Yuqori yuklamali yadrolar, nosozlikka chidamli DB, Zero Trust.', price: '1 750', icon: Server },
+      { title: 'AI va GenAI integratsiyasi', desc: 'Avtonom agentlar, LLM modellarini sanoatga moslashtirish.', price: '2 250', icon: Zap },
+      { title: 'Sanoat Backend tizimlari', desc: 'Rust va Python\'da yuqori unumdor mikroservislar.', price: '1 500', icon: Shield },
+      { title: 'Chat-botlar va AI-assistentlar', desc: 'LLM asosida qo\'llab-quvvatlash, savdo, HR uchun aqlli botlar.', price: '1 400', icon: Bot },
+      { title: 'B2B avtomatlashtirish va integratsiya', desc: 'CRM, ERP, logistika, to\'lov tizimlarini API/webhook orqali bog\'lash.', price: '2 250', icon: Workflow },
+      { title: 'Biznes jarayonlarni avtomatlashtirish', desc: 'Qo\'l operatsiyalarini raqamlashtirish, RPA, hujjat aylanishini optimallashtirish.', price: '1 250', icon: Compass },
+      { title: 'DevOps va bulut infratuzilmasi', desc: 'CI/CD, Kubernetes, Terraform, bulutga migratsiya.', price: '900', icon: Cloud },
+      { title: 'Xavfsizlik auditi va pentest', desc: 'Kod va infratuzilmadagi zaifliklarni qidirish, himoya bo\'yicha tavsiyalar.', price: '750', icon: Lock },
+      { title: 'Uzoq muddatli qo\'llab-quvvatlash (SLA)', desc: 'Monitoring, insidentlarni tuzatish, xavfsizlik yangilanishlari, arxitektor bilan aloqa.', price: '500 / oy', icon: Heart }
+    ],
+    projects: [
+      { name: 'Nexacore', tag: 'MedTech Ecosystem', desc: 'Klinik jarayonlarni boshqarish uchun universal tibbiy platforma.', operatingSystem: 'Web' },
+      { name: 'CNCera', tag: 'Industrial AI / CHPU', desc: 'CNC dastgohlarida metallga yuqori aniqlikda ishlov berish.', operatingSystem: 'Windows, Linux' },
+      { name: 'AIGIS CORE', tag: 'FinTech Core / Security', desc: 'Zero Trust asosidagi ultra-himoyalangan bank yadrosi.', operatingSystem: 'Cloud' },
+      { name: 'DropUZ', tag: 'B2B & B2C Marketplace', desc: 'Zavodlardan to\'g\'ridan-to\'g\'ri ulgurji va chakana savdo gipermarketi.', operatingSystem: 'Web' }
+    ],
+    partnerLogos: ['UzAuto', 'Payme', 'Yandex', 'Sber', 'Kaspi', 'Beeline', 'Microsoft', 'Amazon', 'Google', 'IBM', 'Oracle', 'SAP']
+  },
+  kk: {
+    metaTitle: 'NEXACORE | Толық циклді инжиниринг – жоғары жүктемелі жүйелер және GenAI',
+    metaDescription: 'Іркіліссіз БЖ, GenAI шешімдер және қорғалған банк ядроларын жобалап енгіземіз. ТМД резиденті. Қолжетімділік 99.99%.',
+    metaKeywords: 'инжиниринг, Rust, Python, GenAI, ЖИ, бэкенд, архитектура, автоматтандыру, NEXACORE, Қазақстан, ТМД',
+    navAbout: 'Компания туралы', navDirector: 'Басшылық', navProducts: 'Экожүйе', navServices: 'Мүмкіндіктер', navContact: 'Байланыс',
+    heroBadge: 'Толық циклді инжиниринг • ТМД резиденті',
+    heroTitle: 'Бизнесіңізді 40% жылдамырақ іске қосыңыз – іркіліссіз архитектуралармен',
+    heroSubtitle: 'GenAI шешімдерін, жоғары жүктемелі сервистерді және қорғалған банк ядроларын жобалап енгіземіз. 99,99% қолжетімділік.',
+    heroBtn: 'Архитектура аудитін сұрау', heroSecondaryBtn: 'Кейстерді көру',
+    trustTitle: 'Сенім білдірген салалар', trustIndustries: ['MedTech', 'FinTech', 'Өнеркәсіп', 'Электронды коммерция'],
+    partnersTitle: 'Біздің серіктестер',
+    directorTitle: 'Технологиялық көшбасшылық', directorPost: 'Құрылтайшы • CEO • CTO',
+    directorBio: 'Біз 2023 жылдан бері күрделі цифрлық экожүйелерді құрып келеміз. Менің теміржол инженерлік білімім абсолютті іркіліссіздік парадигмасын NEXACORE архитектурасына енгізуге мүмкіндік берді.',
+    directorStack: 'Негізгі құзыреттер: Rust (Tokio), Python (FastAPI), іркіліссіз ДҚ, AI-агенттер, GenAI, криптографиялық қорғау.',
+    servicesTitle: 'Біздің мүмкіндіктеріміз',
+    servicesSubtitle: '',
+    priceFrom: 'бастап',
+    projectsTitle: 'Нақты сектордағы өнімдер',
+    projectsSubtitle: 'MedTech, FinTech, Өнеркәсіпте қолданылады',
+    processTitle: 'Ынтымақтастық процесі',
+    step1Title: 'Өтінім', step1Desc: 'Сипаттаманы толтырыңыз немесе мессенджерге жазыңыз.',
+    step2Title: 'ІТ-аудит', step2Desc: 'Инфрақұрылым мен қажеттіліктерді талдаймыз.',
+    step3Title: 'Архитектура', step3Desc: 'Егжей-тегжейлі шешім жоспарын жасаймыз.',
+    step4Title: 'Әзірлеу', step4Desc: 'Кезең-кезеңмен іске асырып, сүйемелдейміз.',
+    testimonialsTitle: 'Серіктестердің пікірлері',
+    testimonial1Text: 'NEXACORE арқасында микросервистерге 3 айда бизнесті тоқтатпай көштік. Сенімділік едәуір өсті.',
+    testimonial1Author: 'CTO, FinTech компания',
+    testimonial2Text: 'GenAI-агент операциялық шығындарды 35% төмендетті. Команда бизнес-процестерді терең түсінеді.',
+    testimonial2Author: 'Инновациялар жөніндегі директор, MedTech',
+    faqTitle: 'Жиі қойылатын сұрақтар',
+    faq1Q: 'Неге мұндай бағалар?', faq1A: '2026 жылы бәсекеге қабілетті бастапқы бағаларды ұсынамыз. Жоғары деңгейлі архитектура мен өнеркәсіптік сенімділік қиылысында жұмыс істейміз. Көп сатылы аудит болашақтағы қымбат қателерді болдырмайды.',
+    faq2Q: 'Қауіпсіздік кепілдігі?', faq2A: 'Zero Trust, пентесттер, Rust — осалдықтардың тұтас класын жояды.',
+    faq3Q: 'Мерзімдер?', faq3A: 'MVP — 4 аптадан. Толық интеграция — күрделілігіне байланысты 8 аптадан.',
+    contactTitle: 'Өтінімдерді өңдеу орталығы',
+    contactSubtitle: 'Бастапқы ІТ-аудит үшін техникалық талаптарды толтырыңыз немесе тексерілген арналар арқылы хабарласыңыз.',
+    formName: 'Ұйым / Тапсырыс беруші', formContact: 'Email немесе Telegram', formMessage: 'ТЖ қысқаша сипаттамасы...', formBtn: 'Сипаттаманы жіберу',
+    successTitle: 'Өтінім верификацияланды!', successText: 'Деректер жұмыс поштаңызға жіберілді. Архитектор талдауды бастады.', successBtn: 'Жаңа өтінім',
+    footerRights: 'Барлық құқықтар қорғалған.',
+    clientTypes: ['Жеке тұлғалар', 'ЖК', 'Заңды тұлғалар (B2B)'],
+    services: [
+      { title: 'Core-жүйелер архитектурасы', desc: 'Жоғары жүктемелі ядролар, іркіліссіз ДҚ, Zero Trust.', price: '1 750', icon: Server },
+      { title: 'ЖИ және GenAI интеграциясы', desc: 'Автономды агенттер, LLM-ді өндірістік тапсырмаларға бейімдеу.', price: '2 250', icon: Zap },
+      { title: 'Өнеркәсіптік бэкенд', desc: 'Rust пен Python-да жоғары өнімді микросервистер.', price: '1 500', icon: Shield },
+      { title: 'Чат-боттар және AI-ассистенттер', desc: 'LLM негізінде қолдау, сату, HR үшін ақылды боттар.', price: '1 400', icon: Bot },
+      { title: 'B2B автоматтандыру және интеграция', desc: 'CRM, ERP, логистика, төлем жүйелерін API/webhook арқылы байланыстыру.', price: '2 250', icon: Workflow },
+      { title: 'Бизнес-процестерді автоматтандыру', desc: 'Қол операцияларын цифрландыру, RPA, құжат айналымын оңтайландыру.', price: '1 250', icon: Compass },
+      { title: 'DevOps және бұлтты инфрақұрылым', desc: 'CI/CD, Kubernetes, Terraform, бұлтқа көшіру.', price: '900', icon: Cloud },
+      { title: 'Қауіпсіздік аудиті және пентест', desc: 'Код пен инфрақұрылымдағы осалдықтарды іздеу, қорғау бойынша ұсыныстар.', price: '750', icon: Lock },
+      { title: 'Ұзақ мерзімді қолдау (SLA)', desc: 'Мониторинг, оқиғаларды түзету, қауіпсіздік жаңартулары, архитектормен байланыс.', price: '500 / ай', icon: Heart }
+    ],
+    projects: [
+      { name: 'Nexacore', tag: 'MedTech Ecosystem', desc: 'Клиникалық процестерді басқаруға арналған әмбебап медициналық платформа.', operatingSystem: 'Web' },
+      { name: 'CNCera', tag: 'Industrial AI / ЧПУ', desc: 'Металды жоғары дәлдікпен өңдеуге арналған өнеркәсіптік кешен.', operatingSystem: 'Windows, Linux' },
+      { name: 'AIGIS CORE', tag: 'FinTech Core / Security', desc: 'Zero Trust негізіндегі аса қорғалған банктік ядро.', operatingSystem: 'Cloud' },
+      { name: 'DropUZ', tag: 'B2B & B2C Marketplace', desc: 'Тікелей жеткізілімдердің көтерме-бөлшек гипермаркеті.', operatingSystem: 'Web' }
+    ],
+    partnerLogos: ['UzAuto', 'Payme', 'Yandex', 'Sber', 'Kaspi', 'Beeline', 'Microsoft', 'Amazon', 'Google', 'IBM', 'Oracle', 'SAP']
+  },
+  be: {
+    metaTitle: 'NEXACORE | Поўны цыкл інжынірынгу – высоканагружаныя сістэмы і GenAI',
+    metaDescription: 'Праектуем адмоваўстойлівае ПЗ, GenAI-рашэнні і абароненыя банкаўскія ядры. Рэзідэнт СНД. Даступнасць 99.99%.',
+    metaKeywords: 'інжынірынг, Rust, Python, GenAI, ШІ, бэкенд, архітэктура, аўтаматызацыя, NEXACORE, Беларусь, СНД',
+    navAbout: 'Пра кампанію', navDirector: 'Кіраўніцтва', navProducts: 'Экасістэма', navServices: 'Магчымасці', navContact: 'Кантакты',
+    heroBadge: 'Інжынірынг поўнага цыклу • Рэзідэнт СНД',
+    heroTitle: 'Скараціце time‑to‑market на 40% з надзейнымі архітэктурамі',
+    heroSubtitle: 'Праектуем GenAI-рашэнні, высоканагружаныя сэрвісы і абароненыя банкаўскія ядры. Даступнасць 99,99%, поўны комплаенс.',
+    heroBtn: 'Запытаць аўдыт архітэктуры', heroSecondaryBtn: 'Глядзець кейсы',
+    trustTitle: 'Нам давяраюць', trustIndustries: ['MedTech', 'FinTech', 'Прамысловасць', 'Электронная камерцыя'],
+    partnersTitle: 'Нашы партнёры',
+    directorTitle: 'Тэхналагічнае лідэрства', directorPost: 'Заснавальнік • CEO • CTO',
+    directorBio: 'Мы ствараем складаныя лічбавыя экасістэмы з 2023 года. Мая чыгуначная інжынерная адукацыя сфармавала падыход абсалютнай надзейнасці, перанесены ў архітэктуру NEXACORE.',
+    directorStack: 'Ключавыя кампетэнцыі: Rust (Tokio), Python (FastAPI), надзейныя БД, AI-агенты, GenAI, крыптаграфічная абарона.',
+    servicesTitle: 'Нашы магчымасці',
+    servicesSubtitle: '',
+    priceFrom: 'ад',
+    projectsTitle: 'Прадукты ў рэальным сектары',
+    projectsSubtitle: 'Выкарыстоўваюцца ў MedTech, FinTech, Прамысловасці',
+    processTitle: 'Працэс супрацоўніцтва',
+    step1Title: 'Заяўка', step1Desc: 'Запоўніце спецыфікацыю або напішыце ў месенджар.',
+    step2Title: 'ІТ-аўдыт', step2Desc: 'Аналізуем інфраструктуру і патрэбы.',
+    step3Title: 'Архітэктура', step3Desc: 'Праектуем дэталёвы план рашэння.',
+    step4Title: 'Распрацоўка', step4Desc: 'Паэтапная рэалізацыя з суправаджэннем.',
+    testimonialsTitle: 'Водгукі партнёраў',
+    testimonial1Text: 'З NEXACORE перайшлі на мікрасэрвісы за 3 месяцы без прыпынку бізнесу. Надзейнасць узрасла.',
+    testimonial1Author: 'CTO, FinTech кампанія',
+    testimonial2Text: 'GenAI-агент знізіў аперацыйныя выдаткі на 35%. Каманда разумее бізнес-працэсы.',
+    testimonial2Author: 'Дырэктар па інавацыях, MedTech',
+    faqTitle: 'Частыя пытанні',
+    faq1Q: 'Чаму такія кошты?', faq1A: 'Мы прапануем канкурэнтаздольныя стартавыя кошты ў 2026 годзе, працуючы на стыку high‑level архітэктуры і прамысловай надзейнасці. Шматузроўневы аўдыт выключае дарагія памылкі.',
+    faq2Q: 'Як гарантуеце бяспеку?', faq2A: 'Zero Trust, пен-тэсты, Rust — выключаем цэлыя класы ўразлівасцей.',
+    faq3Q: 'Тэрміны?', faq3A: 'MVP — ад 4 тыдняў. Поўная інтэграцыя — ад 8 тыдняў.',
+    contactTitle: 'Цэнтр апрацоўкі заявак',
+    contactSubtitle: 'Запоўніце спецыфікацыю для першаснага ІТ-аўдыту або звяжыцеся праз правераныя каналы.',
+    formName: 'Арганізацыя / Імя заказчыка', formContact: 'Email або Telegram', formMessage: 'Кароткае апісанне ТЗ...', formBtn: 'Адправіць спецыфікацыю',
+    successTitle: 'Заяўка верыфікавана!', successText: 'Дадзеныя адпраўлены на ваш email праз абаронены шлюз. Архітэктар пачаў аналіз.', successBtn: 'Новая заяўка',
+    footerRights: 'Усе правы абаронены.',
+    clientTypes: ['Прыватныя асобы', 'ІП', 'Юрыдычныя асобы (B2B)'],
+    services: [
+      { title: 'Архітэктура Core-сістэм', desc: 'Высоканагружаныя ядры, надзейныя БД, пратаколы Zero Trust.', price: '1 750', icon: Server },
+      { title: 'Інтэграцыя ШІ і GenAI', desc: 'Аўтаномныя агенты, настройка LLM пад індустрыяльныя задачы.', price: '2 250', icon: Zap },
+      { title: 'Прамысловы бэкенд', desc: 'Высокапрадукцыйныя сэрвісы на Rust і Python, мікрасэрвісы.', price: '1 500', icon: Shield },
+      { title: 'Распрацоўка чат-ботаў і AI-асістэнтаў', desc: 'Разумныя боты для падтрымкі, продажаў, HR на аснове LLM.', price: '1 400', icon: Bot },
+      { title: 'B2B-аўтаматызацыя і інтэграцыя', desc: 'Звязванне CRM, ERP, лагістыкі, плацежных сістэм праз API/webhooks.', price: '2 250', icon: Workflow },
+      { title: 'Аўтаматызацыя бізнес-працэсаў', desc: 'Лічбавізацыя ручных аперацый, RPA, аптымізацыя дакументазвароту.', price: '1 250', icon: Compass },
+      { title: 'DevOps і воблачная інфраструктура', desc: 'CI/CD, Kubernetes, Terraform, міграцыя ў воблака.', price: '900', icon: Cloud },
+      { title: 'Аўдыт бяспекі і пен-тэсты', desc: 'Пошук уразлівасцей у кодзе і інфраструктуры, рэкамендацыі па абароне.', price: '750', icon: Lock },
+      { title: 'Доўгатэрміновае суправаджэнне (SLA)', desc: 'Маніторынг, выпраўленне інцыдэнтаў, абнаўленні бяспекі, доступ да архітэктара.', price: '500 / мес', icon: Heart }
+    ],
+    projects: [
+      { name: 'Nexacore', tag: 'MedTech Ecosystem', desc: 'Універсальная медыцынская платформа для агрэгацыі дадзеных і кіравання клінічнымі працэсамі.', operatingSystem: 'Web' },
+      { name: 'CNCera', tag: 'Industrial AI / ЧПУ', desc: 'Апрацоўка металу на станках з ЧПУ з высокай дакладнасцю.', operatingSystem: 'Windows, Linux' },
+      { name: 'AIGIS CORE', tag: 'FinTech Core / Security', desc: 'Звышабароненае модульнае банкаўскае ядро на Zero Trust.', operatingSystem: 'Cloud' },
+      { name: 'DropUZ', tag: 'B2B & B2C Marketplace', desc: 'Гіпермаркет прамых паставак, які злучае фабрыкі з бізнесам.', operatingSystem: 'Web' }
+    ],
+    partnerLogos: ['UzAuto', 'Payme', 'Yandex', 'Sber', 'Kaspi', 'Beeline', 'Microsoft', 'Amazon', 'Google', 'IBM', 'Oracle', 'SAP']
+  },
+  en: {
+    metaTitle: 'NEXACORE | Full-Cycle Engineering – High-Load Systems & GenAI',
+    metaDescription: 'We design fault-tolerant software, GenAI solutions, and secure banking kernels. CIS resident. 99.99% uptime. Starter prices from $500.',
+    metaKeywords: 'engineering, Rust, Python, GenAI, AI, backend, architecture, automation, NEXACORE, Uzbekistan, CIS',
+    navAbout: 'Company', navDirector: 'Leadership', navProducts: 'Ecosystem', navServices: 'Capabilities', navContact: 'Contact',
+    heroBadge: 'Full‑Cycle Engineering • CIS Resident',
+    heroTitle: 'Cut time‑to‑market by 40% with fault‑tolerant architectures',
+    heroSubtitle: 'We design GenAI solutions, high‑load services, and secure banking kernels. 99.99% uptime, full compliance.',
+    heroBtn: 'Request Architecture Audit', heroSecondaryBtn: 'View Cases',
+    trustTitle: 'Trusted by', trustIndustries: ['MedTech', 'FinTech', 'Industry', 'E‑commerce'],
+    partnersTitle: 'Our Partners',
+    directorTitle: 'Technological Leadership', directorPost: 'Founder • CEO • CTO',
+    directorBio: 'We have been engineering complex digital architectures since 2023. My railway systems engineering background instilled a paradigm of absolute resilience, which I embedded into NEXACORE.',
+    directorStack: 'Core capabilities: Rust (Tokio), Python (FastAPI), resilient DBs, AI agents, GenAI, Zero Trust cryptography.',
+    servicesTitle: 'Our Capabilities',
+    servicesSubtitle: '',
+    priceFrom: 'from',
+    projectsTitle: 'Deployed Software Systems',
+    projectsSubtitle: 'Operational in MedTech, FinTech, Industrial sectors',
+    processTitle: 'Collaboration Process',
+    step1Title: 'Request', step1Desc: 'Fill specification or message us.',
+    step2Title: 'IT Audit', step2Desc: 'Analyze infrastructure and needs.',
+    step3Title: 'Architecture', step3Desc: 'Design a detailed solution plan.',
+    step4Title: 'Development', step4Desc: 'Phased implementation with support.',
+    testimonialsTitle: 'Partner Testimonials',
+    testimonial1Text: 'With NEXACORE we migrated to microservices in 3 months with zero downtime. Reliability improved dramatically.',
+    testimonial1Author: 'CTO, FinTech company',
+    testimonial2Text: 'The GenAI agent reduced operational costs by 35%. The team deeply understands business processes.',
+    testimonial2Author: 'Director of Innovation, MedTech',
+    faqTitle: 'FAQ',
+    faq1Q: 'Why these prices?', faq1A: 'We offer competitive starter prices in 2026, operating at the intersection of high‑level architecture and industrial reliability. Multi‑stage audit prevents future costly errors.',
+    faq2Q: 'How do you guarantee security?', faq2A: 'Zero Trust, pentests, Rust for critical components — eliminating whole vulnerability classes.',
+    faq3Q: 'Timelines?', faq3A: 'MVP — from 4 weeks. Full integration — from 8 weeks depending on complexity.',
+    contactTitle: 'Request Center',
+    contactSubtitle: 'Submit your technical specification for an initial IT audit or contact us via verified channels.',
+    formName: 'Organization / Representative', formContact: 'Email or Telegram', formMessage: 'Brief technical requirements...', formBtn: 'Submit Specification',
+    successTitle: 'Request Verified!', successText: 'Your data has been sent via secure gateway. Our architect is reviewing the inputs.', successBtn: 'New Request',
+    footerRights: 'All rights reserved.',
+    clientTypes: ['Individuals', 'Sole Proprietors', 'Corporate (B2B)'],
+    services: [
+      { title: 'Core Systems Architecture', desc: 'High-throughput kernels, fault-tolerant DBs, Zero Trust protocols.', price: '1,750', icon: Server },
+      { title: 'AI & GenAI Integration', desc: 'Autonomous agents, LLM fine‑tuning for industrial tasks.', price: '2,250', icon: Zap },
+      { title: 'Enterprise Backend', desc: 'High‑performance services in Rust & Python, microservices.', price: '1,500', icon: Shield },
+      { title: 'Chatbot & AI Assistant Development', desc: 'Smart bots for support, sales, HR powered by LLMs with integration.', price: '1,400', icon: Bot },
+      { title: 'B2B Automation & Integration', desc: 'Connecting CRM, ERP, logistics, payment systems via APIs/webhooks.', price: '2,250', icon: Workflow },
+      { title: 'Business Process Automation', desc: 'Digitizing manual operations, RPA, document workflow optimization.', price: '1,250', icon: Compass },
+      { title: 'DevOps & Cloud Infrastructure', desc: 'CI/CD, Kubernetes, Terraform, cloud migration (AWS/GCP/Azure).', price: '900', icon: Cloud },
+      { title: 'Security Audit & Pentesting', desc: 'Vulnerability assessment in code and infrastructure with recommendations.', price: '750', icon: Lock },
+      { title: 'Long‑term Support (SLA)', desc: 'Monitoring, incident resolution, security updates, architect on call.', price: '500 / mo', icon: Heart }
+    ],
+    projects: [
+      { name: 'Nexacore', tag: 'MedTech Ecosystem', desc: 'Distributed medical platform for data aggregation and clinical workflow management.', operatingSystem: 'Web' },
+      { name: 'CNCera', tag: 'Industrial AI / CNC', desc: 'Industrial suite for precision metalwork on CNC machinery.', operatingSystem: 'Windows, Linux' },
+      { name: 'AIGIS CORE', tag: 'FinTech Core / Security', desc: 'Hyper‑secure modular banking kernel under Zero Trust.', operatingSystem: 'Cloud' },
+      { name: 'DropUZ', tag: 'B2B & B2C Marketplace', desc: 'Direct‑to‑consumer factory hypermarket cutting intermediaries.', operatingSystem: 'Web' }
+    ],
+    partnerLogos: ['UzAuto', 'Payme', 'Yandex', 'Sber', 'Kaspi', 'Beeline', 'Microsoft', 'Amazon', 'Google', 'IBM', 'Oracle', 'SAP']
+  }
 };
 
-// ========== ХУКИ И КОМПОНЕНТЫ ==========
+// Компонент бегущей строки
+const Marquee = ({ items, reverse = false }: { items: string[]; reverse?: boolean }) => {
+  return (
+    <div className="relative overflow-hidden whitespace-nowrap py-3">
+      <div
+        className={`inline-flex gap-12 ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'}`}
+        style={{ animationDuration: '30s' }}
+      >
+        {[...items, ...items].map((name, i) => (
+          <span key={i} className="text-sm font-mono font-bold uppercase tracking-widest text-slate-400 hover:text-slate-600 transition-colors cursor-default px-4 py-2 rounded-full border border-slate-200/50 bg-white/50 backdrop-blur-sm">
+            {name}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// Хуки анимации появления
 const useInView = (threshold = 0.2) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(true);
@@ -178,60 +430,28 @@ export default function App() {
         <meta name="twitter:title" content={t.metaTitle} />
         <meta name="twitter:description" content={t.metaDescription} />
         <meta name="twitter:image" content={`${baseUrl}/og-image.jpg`} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqItems.map(item => ({
-              "@type": "Question",
-              name: item.question,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: item.answer
-              }
-            }))
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "HowTo",
-            name: t.processTitle,
-            step: howToSteps.map(step => ({
-              "@type": "HowToStep",
-              name: step.name,
-              text: step.text
-            }))
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "NEXACORE",
-            url: baseUrl,
-            logo: `${baseUrl}/favicon.svg`,
-            description: t.metaDescription,
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "ул. Техническая, 1",
-              addressLocality: "Ташкент",
-              addressCountry: "UZ"
-            },
-            contactPoint: [
-              {
-                "@type": "ContactPoint",
-                email: "precisionworks2022@gmail.com",
-                telephone: "+998931974100",
-                contactType: "sales"
-              }
-            ],
-            sameAs: [
-              "https://t.me/Anton_199X",
-              "https://www.linkedin.com/in/anton-vylderov-nexacoreai-medtech/"
-            ]
-          })}
-        </script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqItems.map(item => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } }))
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: t.processTitle,
+          step: howToSteps.map(step => ({ "@type": "HowToStep", name: step.name, text: step.text }))
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "NEXACORE",
+          url: baseUrl,
+          logo: `${baseUrl}/favicon.svg`,
+          description: t.metaDescription,
+          address: { "@type": "PostalAddress", streetAddress: "ул. Техническая, 1", addressLocality: "Ташкент", addressCountry: "UZ" },
+          contactPoint: [{ "@type": "ContactPoint", email: "precisionworks2022@gmail.com", telephone: "+998931974100", contactType: "sales" }],
+          sameAs: ["https://t.me/Anton_199X", "https://www.linkedin.com/in/anton-vylderov-nexacoreai-medtech/"]
+        })}</script>
       </Helmet>
 
       <div className="fixed inset-0 pointer-events-none opacity-[0.02] z-0" style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -280,11 +500,18 @@ export default function App() {
           </div>
         </section>
 
+        {/* Trust + Partners */}
         <section className="bg-white py-6 border-b border-slate-100">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-wrap items-center justify-center gap-8 text-xs font-mono uppercase tracking-widest text-slate-400 font-bold">
+            <div className="flex flex-wrap items-center justify-center gap-8 text-xs font-mono uppercase tracking-widest text-slate-400 font-bold mb-4">
               <span className="text-slate-500">{t.trustTitle}</span>
               {t.trustIndustries.map((ind: string) => <span key={ind} className="flex items-center gap-2 text-slate-600"><CheckCircle className="w-4 h-4 text-blue-600" />{ind}</span>)}
+            </div>
+            {/* Бегущая строка партнёров */}
+            <div className="mt-4">
+              <p className="text-xs font-mono uppercase tracking-widest text-slate-400 font-bold text-center mb-2">{t.partnersTitle}</p>
+              <Marquee items={t.partnerLogos} />
+              <Marquee items={t.partnerLogos.slice(0, 8).reverse()} reverse />
             </div>
           </div>
         </section>
