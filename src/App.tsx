@@ -501,20 +501,28 @@ export default function App() {
         </section>
 
         {/* Trust + Partners */}
-        <section className="bg-white py-6 border-b border-slate-100">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-wrap items-center justify-center gap-8 text-xs font-mono uppercase tracking-widest text-slate-400 font-bold mb-4">
-              <span className="text-slate-500">{t.trustTitle}</span>
-              {t.trustIndustries.map((ind: string) => <span key={ind} className="flex items-center gap-2 text-slate-600"><CheckCircle className="w-4 h-4 text-blue-600" />{ind}</span>)}
-            </div>
-            {/* Бегущая строка партнёров */}
-            <div className="mt-4">
-              <p className="text-xs font-mono uppercase tracking-widest text-slate-400 font-bold text-center mb-2">{t.partnersTitle}</p>
-              <Marquee items={t.partnerLogos} />
-              <Marquee items={t.partnerLogos.slice(0, 8).reverse()} reverse />
-            </div>
-          </div>
-        </section>
+<section className="bg-white py-6 border-b border-slate-100">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="flex flex-wrap items-center justify-center gap-8 text-xs font-mono uppercase tracking-widest text-slate-400 font-bold mb-4">
+      <span className="text-slate-500">{t.trustTitle}</span>
+      {t.trustIndustries.map((ind: string) => <span key={ind} className="flex items-center gap-2 text-slate-600"><CheckCircle className="w-4 h-4 text-blue-600" />{ind}</span>)}
+    </div>
+    {/* Статичные логотипы партнёров */}
+    <div className="mt-4">
+      <p className="text-xs font-mono uppercase tracking-widest text-slate-400 font-bold text-center mb-3">{t.partnersTitle}</p>
+      <div className="flex flex-wrap items-center justify-center gap-6">
+        {(t.partnerLogos as string[]).map((name) => (
+          <span
+            key={name}
+            className="text-sm font-mono font-bold uppercase tracking-wider text-slate-400 px-4 py-2 rounded-full border border-slate-200/50 bg-white/50 backdrop-blur-sm"
+          >
+            {name}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* Руководство */}
         <AnimatedSection id="director" className="py-24 max-w-7xl mx-auto px-6 border-b border-slate-200/60" itemScope itemType="https://schema.org/Person">
